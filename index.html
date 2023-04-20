@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet " type="text/css" href="/style.css" />
+    <title>Chat App</title>
+  </head>
+  <body>
+    <div class="chat_app">
+      <div class="logo">
+        <img src="/logo.png" alt="logo" />
+        <span>CHAT APP</span>
+        <img src="./menu.png" alt="menu" id="menu" />
+      </div>
+      <div class="chats-online">
+        <div class="onlines">
+          <div class="peoples">
+            <div class="people"><span>Onlines</span></div>
+            <div class="count"><span>1</span></div>
+        </div>
+            <div class="users">
+              <div class="users-list"></div>
+        </div>
+          
+        </div>
+        <div class="chats">
+          <div class="message_area"></div>
+
+          <div class="send_message">
+            <input
+              type="text"
+              class="text_message"
+              id="text-area"
+              placeholder="write your message..."
+            />
+            <button id="send" class="send">
+              <img src="/send.png" alt="send" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+    <script>
+         const btn = document.querySelector('#menu');
+         const close  = document.querySelector('.message_area')
+         
+         btn.addEventListener('click',()=>{
+         document.querySelector('.onlines').style.display ="block";
+         })
+         close.addEventListener('click',()=>{
+            document.querySelector('.onlines').style.display ="none";
+         })
+
+    </script>
+  </body>
+</html>
