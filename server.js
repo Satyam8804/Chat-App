@@ -25,7 +25,17 @@ io.on('connection', (socket)=>{
     socket.on('new-user-joined',(Name)=>{
         users[socket.id] = Name
         socket.broadcast.emit("user-connected",Name)
+        io.emit("user-list",users);
     })
+
+socket.on('disconnect',()=>{
+    socket.broadcast.emit('user-disconnected',user=users[socket.id]);
+    delete users[socket.id];
+    io.emit("user-list",users);
+
+})
+
+
     socket.on('message',(msg)=>{
        socket.broadcast.emit('message',msg)
     })

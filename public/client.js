@@ -5,7 +5,8 @@ let Name;
 let inputText = document.querySelector('#text-area')
 let messageArea = document.querySelector('.message_area')
 let send = document.querySelector('#send')
-
+let count = document.querySelector('.count');
+let userList = document.querySelector('.users-list');
 do{
     Name = prompt('Enter Your Name here : ' )
 }
@@ -66,7 +67,7 @@ function appendMessage(msg ,type){
 
 socket.on('message',(msg)=>{
     appendMessage(msg,'incomming')
-    scrollToBottom
+    scrollToBottom()
 })
 
 function scrollToBottom(){
@@ -81,9 +82,25 @@ function userJoinLeft(name , status){
     let div = document.createElement('div')
     div.classList.add('user-join');
     let content = `
-    <p><b>${name}</b> Joined the chat</p>
+    <p><b>${name}</b> ${status} the chat</p>
     `
     div.innerHTML = content
     messageArea.appendChild(div)
     
 }
+
+socket.on('user-disconnected',(user)=>{
+    userJoinLeft(user,'left')
+})
+
+socket.on('user-list',(users)=>{
+    userList.innerHTML ="";
+    users_arr = Object.values(users)
+    for(i =0 ; i<users_arr.length ; i++){
+        let p = document.createElement('p');
+        p.innerText = users_arr[i];
+        userList.appendChild(p);
+
+    }
+    count.innerText =users_arr.length
+})

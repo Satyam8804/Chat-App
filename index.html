@@ -18,11 +18,13 @@
         <div class="onlines">
           <div class="peoples">
             <div class="people"><span>Onlines</span></div>
-            <div class="count"><span>1</span></div>
-        </div>
+            <div><span class="count">1</span></div>
+          </div>
             <div class="users">
-              <div class="users-list"></div>
-        </div>
+              <div class="users-list">
+
+              </div>
+           </div>
           
         </div>
         <div class="chats">
@@ -46,15 +48,18 @@
     <script src="client.js"></script>
     <script>
          const btn = document.querySelector('#menu');
-         const close  = document.querySelector('.message_area')
+        //  const close  = document.querySelector('.message_area')
          
          btn.addEventListener('click',()=>{
-         document.querySelector('.onlines').style.display ="block";
-         })
-         close.addEventListener('click',()=>{
-            document.querySelector('.onlines').style.display ="none";
-         })
-
+          console.log("button clicked")
+          if(document.querySelector('.onlines').style.display == "block"){
+               document.querySelector('.onlines').style.display ="none";
+         }else{
+          document.querySelector('.onlines').style.display ="block";
+         }
+        }
+         );
+        
     </script>
   </body>
 </html>
