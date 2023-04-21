@@ -229,7 +229,7 @@ body{
     .chat_app{
        margin: 0;
         width: 95%;
-        height: 100vh;
+        height: 90vh;
     }
     #menu{
         display: block;
